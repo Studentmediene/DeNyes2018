@@ -2,4 +2,8 @@
 Flask==1.0.2
 Flask-APScheduler==1.10.1
 
+# Slack
 slackclient==1.2.1
+
+# Scraper
+feedparser==5.2.1
