@@ -19,7 +19,7 @@ def diff_entries(old_entries, new_entries):
 def entries_to_messages(entries):
     for entry in entries:
         if "title" in entry.keys() and "link" in entry.keys():
-            yield entry["title"] + ":\n" + entry["link"]
+            yield entry["title"] + "\n" + entry["link"]
 
 def get_new_entries(existing_entries, new_entries):
     if new_entries is not None:

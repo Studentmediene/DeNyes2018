@@ -45,8 +45,16 @@ def derp():
         make_response(message, 403, {"X-Slack-No-Retry": 1})
 
     if "event" in slack_event:
-        if slack_event['event']['text'] == '!last':
-            return send_message(entries_to_messages(fetch()[:1])[0])
+        event = slack_event['event']
+        if "text" in event.keys() and event['text'].startswith('!last'):
+            number = 1
+            split = event['text'].split(" ")
+            if len(split) > 1:
+                number = int(split[1])
+            last = list(fetch())[:number]
+            for message in entries_to_messages(last):
+                send_message(message)
+            return make_response("OK", 200, {})
 
     return make_response("[NO EVENT IN SLACK REQUEST] These are not the droids\
                              you're looking for.", 404, {"X-Slack-No-Retry": 1})
