@@ -1,0 +1,6 @@
+# Ignore everything
+**
+
+# Allow source code and pip requirements
+!src/**
+!requirements.txt

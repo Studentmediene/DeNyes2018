@@ -1,0 +1,5 @@
+# App
+Flask==1.0.2
+Flask-APScheduler==1.10.1
+
+slackclient==1.2.1
