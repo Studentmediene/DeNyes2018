@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:3
 
 
 # Install Python packages
@@ -10,4 +10,4 @@ COPY src src
 
 
 ENTRYPOINT ["python"]
-CMD [""]
+CMD ["src/app.py"]
