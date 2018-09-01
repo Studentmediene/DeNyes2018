@@ -2,7 +2,7 @@ import json
 
 from flask import Flask, request, make_response
 from flask_apscheduler import APScheduler
-from client import send_message, token
+from client import send_message, verification_token
 from scraper import fetch, get_new_entries, entries_to_messages
 
 
@@ -38,9 +38,9 @@ def derp():
     if "challenge" in slack_event:
         return make_response(slack_event["challenge"], 200, {"content_type": "application/json" })
 
-    if token != slack_event.get("token"):
+    if verification_token != slack_event.get("token"):
         message = "Invalid Slack verification token: %s \npyBot has: \
-                       %s\n\n" % (slack_event["token"], token.verification)
+                %s\n\n" % (slack_event["token"], verification_token.verification)
 
         make_response(message, 403, {"X-Slack-No-Retry": 1})
 
