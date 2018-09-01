@@ -27,7 +27,7 @@ def send_message(message):
 def get_new_entries():
     new_entries = fetch()
     for i in range(10):
-        sleep(1000)
+        sleep(60)
         old_entries = new_entries[:]
         new_entries = fetch()
         if new_entries is not None:
